@@ -16,11 +16,7 @@ h1 {
 h4 {
   color: darkgrey;
   margin: 1em 0 0.75em;
-}
-
-/* 'first-of-type' selector targets first occurrence of an element within its container; in this case it sets the margin above first h3 element ("choose your grid size") to 1em */
-h3:first-of-type {
-  margin-top: 1em;
+  text-align: left;
 }
 
 table,
@@ -63,8 +59,21 @@ input[type=number] {
 	text-decoration: none;
 	text-shadow: 0 1px #fff;
   cursor: pointer;
+  text-align: left;
+  /* places button on its own line */
+  display: block;
+  margin-top: 1em;
 }
 
 .color-picker {
 	border: 1px solid #dcdcdc;
+  float: left;
+}
+
+p {
+  color: darkgrey;
+}
+
+.size-picker {
+  text-align: left;
 }

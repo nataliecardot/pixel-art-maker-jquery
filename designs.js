@@ -22,6 +22,7 @@ $('.size-picker').submit(function makeGrid(e) {
       // here, .attr() method sets attribute (class) to name provided as second argument for matched elements (td)
       $('td').attr('class', 'Cell');
     }
+    $(document).add('p')
   }
   // fills in cell with chosen color when mouse button is pressed down over it. Unlike function dragColor(), doesn't require mouse to enter a cell while mouse button is being held down. Note: 'mousedown' event is fired when the mouse button is pressed but before it's released, whereas click event is fired after mousedown (click) and mouseup (release) events have completed
   $('.Cell').mousedown(function() {
@@ -34,7 +35,7 @@ $('.size-picker').submit(function makeGrid(e) {
 
 // Enables mouse-drag coloring. Fills in cell when mouse pointer enters it and mouse is pressed down
 function dragColor() {
-  // Filters clicks by those in cells. Note: 'mousedown' event is fired when the mouse button is pressed but before it's released, whereas 'click' event is fired after mousedown (click) and mouseup (release) events have completed
+  // filters clicks by those in cells. Note: 'mousedown' event is fired when the mouse button is pressed but before it's released, whereas 'click' event is fired after mousedown (click) and mouseup (release) events have completed
   pixelCanvas.on('mousedown', 'td', function() {
     mousedown = true;
   });
@@ -54,3 +55,8 @@ function dragColor() {
     }
   });
 }
+
+// removes color from cell on double click
+$(pixelCanvas).on('dblclick', 'td', function() {
+  $(this).removeAttr('style');
+});
