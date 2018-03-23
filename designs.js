@@ -56,7 +56,7 @@ function dragColor() {
   });
 }
 
-// removes color from cell on double click
+// removes color from cell upon double click
 $(pixelCanvas).on('dblclick', 'td', function() {
   $(this).removeAttr('style');
 });
