@@ -3,9 +3,11 @@
 const pixelCanvas = $('.pixel-canvas');
 
 // creates grid upon clicking 'submit' button (submit event)
-$('.size-picker').submit(function makeGrid(e) {
+function makeGrid(e) {
   // preventDefault() method intercepts 'submit' event, which would normally submit the form and cause the page to refresh, preventing makeGrid() function from being processed
-  e.preventDefault();
+  if (e) {
+    e.preventDefault();
+  }
   // if grid is already present, clears any cells that have been filled in
   $('table tr').remove();
   // grid height value entered by user
@@ -22,7 +24,6 @@ $('.size-picker').submit(function makeGrid(e) {
       // here, .attr() method sets attribute (class) to name provided as second argument for matched elements (td)
       $('td').attr('class', 'Cell');
     }
-    $(document).add('p')
   }
   // fills in cell with chosen color when mouse button is pressed down over it. Unlike function dragColor(), doesn't require mouse to enter a cell while mouse button is being held down. Note: 'mousedown' event is fired when the mouse button is pressed but before it's released, whereas click event is fired after mousedown (click) and mouseup (release) events have completed
   $('.Cell').mousedown(function() {
@@ -31,9 +32,11 @@ $('.size-picker').submit(function makeGrid(e) {
     $(this).css('background-color', color);
   });
   dragColor();
-});
+};
 
-// Enables mouse-drag coloring. Fills in cell when mouse pointer enters it and mouse is pressed down
+$('.size-picker').submit(makeGrid);
+
+// enables mouse-drag coloring. Fills in cell when mouse pointer enters it and mouse is pressed down
 function dragColor() {
   // filters clicks by those in cells. Note: 'mousedown' event is fired when the mouse button is pressed but before it's released, whereas 'click' event is fired after mousedown (click) and mouseup (release) events have completed
   pixelCanvas.on('mousedown', 'td', function() {
@@ -47,7 +50,7 @@ function dragColor() {
 
   // 'mouseover' triggered when mouse pointer enters an element
   pixelCanvas.on('mouseover', 'td', function() {
-    // Variable 'color' is defined here rather than globally so JS checks whether a new color has been picked before each mousedown event
+    // variable 'color' is defined here rather than globally so JS checks whether a new color has been picked before each mousedown event
     let color = $('.color-picker').val();
     if (mousedown) {
       // Selector 'this' refers to pixelCanvas
@@ -56,7 +59,9 @@ function dragColor() {
   });
 }
 
-// removes color from cell upon double click
+// removes color from cell on double-click
 $(pixelCanvas).on('dblclick', 'td', function() {
   $(this).removeAttr('style');
 });
+
+$(window).on('load', makeGrid);
