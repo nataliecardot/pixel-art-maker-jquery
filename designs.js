@@ -81,11 +81,12 @@ $('.erase-mode').click(function() {
   $('.Cell').off();
   function dragErase() {
     // Filters clicks by those in cells
-    $(pixelCanvas).on('mousedown', 'td', function() {
+    $(pixelCanvas).on('mousedown', 'td', function(evt) {
       mousedown = true;
     });
     $(document).mouseup(function() {
       mousedown = false;
+      evt.preventDefault(); // Prevents unwanted behavior
     });
     $(pixelCanvas).on('mouseover', 'td', function() {
       if (mousedown) {
