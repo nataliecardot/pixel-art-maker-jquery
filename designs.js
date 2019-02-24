@@ -17,6 +17,7 @@ function makeGrid(e) {
   if (e) {
     e.preventDefault();
   }
+  $('body').css('cursor', 'url(brush.png) 0 32, auto');
   // If grid already present, clears any cells that have been filled in
   $('table tr').remove();
   // Grid height value entered by user
@@ -77,6 +78,7 @@ $('.quick-fill').click(function() {
 
 // Allows for drag erasing upon clicking 'erase' button
 $('.erase-mode').click(function() {
+  $('body').css('cursor', 'url(eraser.png) 0 32, auto');
   // Removes event handler (mousedown) enabling single-cell coloring while in default mode (inside makeGrid()). Without this, after clicking 'erase' mode upon page load, mousedown fills cell with color (but re-removes color on mouseup)
   $('.Cell').off();
   function dragErase() {
@@ -103,6 +105,7 @@ $('.erase-mode').click(function() {
 
 // Allows user to return to (default) draw mode after using 'erase' button. Fills in cell when mouse pointer enters it and mouse is pressed down
 $('.draw-mode').click(function() {
+  $('body').css('cursor', 'url(brush.png) 0 32, auto');
   // Removes event handlers that were attached to the grid with .on(). Without this, code for single-cell erase while in erase mode prevents single-cell coloring while in draw mode
   $(pixelCanvas).off();
   function dragDrawMode() {
