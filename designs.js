@@ -45,6 +45,9 @@ function makeGrid(e) {
 
 $('.size-picker').submit(makeGrid);
 
+// Resets on clicking reset icon
+$('.fa-redo').on('click', makeGrid);
+
 // Enables mouse-drag coloring (default mode). Fills in cell when mouse pointer enters it and mouse is pressed down
 function dragColor() {
   // Filters clicks by those in cells
