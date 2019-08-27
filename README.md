@@ -1,4 +1,4 @@
-# pixel-art-maker-jquery
+# Pixel Art Maker (jQuery)
 
 This is the final project of Udacity's Grow with Google Front-End Web Development scholarship challenge course.
 
